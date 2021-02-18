@@ -7,7 +7,7 @@
 
     <body>
         <!-- List of uploaded documents -->
-        {% if documents %}
+        <!-- {% if documents %}
             All documents in the database:
             <ul>
                 {% for document in documents %}
@@ -16,7 +16,7 @@
             </ul>
         {% else %}
             <p>No documents.</p>
-        {% endif %}
+        {% endif %} -->
 
         <!-- Upload form. Note enctype attribute! -->
         <form action="{% url "my-view" %}" method="post" enctype="multipart/form-data">

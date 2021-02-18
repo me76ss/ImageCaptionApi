@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import Document
 from .forms import DocumentForm
-
+from .imagecaption import imagecaption
 
 @csrf_exempt
 def my_view(request):
@@ -16,9 +16,18 @@ def my_view(request):
         if form.is_valid():
             newdoc = Document(image=request.FILES['docfile'])
             newdoc.save()
+            print(newdoc.image.name)
+            x = imagecaption(newdoc.image.name)
             #f(voroodi) khorooji be return
-            return HttpResponse(f'test: {newdoc.image.name}')
+            return HttpResponse(f'{x}')
             #.url
+
+            # if form.is_valid():
+            # newdoc = Document(image=request.FILES['docfile'])
+            # newdoc.save()
+            # #f(voroodi) khorooji be return
+            # return HttpResponse(f'test: {newdoc.image.name}')
+            # #.url
         else:
             message = 'The form is not valid. Fix the following error:'
     else:
